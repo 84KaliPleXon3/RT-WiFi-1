@@ -1402,8 +1402,8 @@ static int ath9k_htc_conf_tx(struct ieee80211_hw *hw,
 	qnum = get_hw_qnum(queue, priv->hwq_map);
 
 	printk("ath9k_htc_conf_tx: Configure tx [queue/hwq] [%d/%d],  aifs: %d, cw_min: %d, cw_max: %d, txop: %d\n",
-			queue, qnum, qi.tqi_aifs, qi.tqi_cw_min,
-			qi.tqi_cw_max, qi.tqi_txop);
+			queue, qnum, qi.tqi_aifs, qi.tqi_cwmin,
+			qi.tqi_cwmax, qi.tqi_burstTime);
 
 	ath_dbg(common, CONFIG,
 		"Configure tx [queue/hwq] [%d/%d],  aifs: %d, cw_min: %d, cw_max: %d, txop: %d\n",
