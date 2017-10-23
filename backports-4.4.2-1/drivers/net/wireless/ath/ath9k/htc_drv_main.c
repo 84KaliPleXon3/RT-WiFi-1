@@ -1386,11 +1386,18 @@ static int ath9k_htc_conf_tx(struct ieee80211_hw *hw,
 	ath9k_htc_ps_wakeup(priv);
 
 	memset(&qi, 0, sizeof(struct ath9k_tx_queue_info));
-
 	qi.tqi_aifs = params->aifs;
-	qi.tqi_cwmin = params->cw_min;
-	qi.tqi_cwmax = params->cw_max;
 	qi.tqi_burstTime = params->txop * 32;
+	if (queue > 0)
+	{
+		qi.tqi_cwmin = params->cw_min;
+		qi.tqi_cwmax = params->cw_max;
+	}
+	else
+	{ //Forcing cwmin and cwmax values for AC == 0
+		qi.tqi_cwmin = 1;
+		qi.tqi_cwmax = 3;
+	}
 
 	qnum = get_hw_qnum(queue, priv->hwq_map);
 
