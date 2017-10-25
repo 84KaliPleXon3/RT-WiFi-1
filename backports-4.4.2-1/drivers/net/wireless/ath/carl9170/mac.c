@@ -153,11 +153,11 @@ int carl9170_set_qos(struct ar9170 *ar)
 
 	printk("carl9170_set_qos: AR9170_TXQ_VO Received cw_min=%d cw_max=%d\r\n", ar->edcf[3].cw_min, ar->edcf[3].cw_max);
 	printk("carl9170_set_qos: AR9170_TXQ_VO Configuring cw_min=%d cw_max=%d\r\n", 1, 3);
-	carl9170_regwrite(AR9170_MAC_REG_AC3_CW, 1 | (3 << 16));
+	carl9170_regwrite(AR9170_MAC_REG_AC3_CW, 15 | (31 << 16));
 
 	printk("carl9170_set_qos: __AR9170_NUM_TXQ Received cw_min=%d cw_max=%d\r\n", ar->edcf[4].cw_min, ar->edcf[4].cw_max);
 	printk("carl9170_set_qos: __AR9170_NUM_TXQ Configuring cw_min=%d cw_max=%d\r\n", 1, 3);
-	carl9170_regwrite(AR9170_MAC_REG_AC4_CW, 1 | (3 << 16));
+	carl9170_regwrite(AR9170_MAC_REG_AC4_CW, 15 | (31 << 16));
 
 	carl9170_regwrite(AR9170_MAC_REG_AC2_AC1_AC0_AIFS,
 			  ((ar->edcf[0].aifs * 9 + 10)) |

@@ -1395,8 +1395,8 @@ static int ath9k_htc_conf_tx(struct ieee80211_hw *hw,
 	}
 	else
 	{ //Forcing cwmin and cwmax values for AC == 0
-		qi.tqi_cwmin = 1;
-		qi.tqi_cwmax = 3;
+		qi.tqi_cwmin = 15;
+		qi.tqi_cwmax = 31;
 	}
 
 	qnum = get_hw_qnum(queue, priv->hwq_map);
